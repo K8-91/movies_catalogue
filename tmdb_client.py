@@ -4,6 +4,16 @@ my_api_token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNmJjYzM4ODI4Y2UwN2ZjNjQyMGVlZjQ
 BASE_API = "https://api.themoviedb.org/3/movie"
 
 
+def call_tmdb_api(endpoint):
+   full_url = f"https://api.themoviedb.org/3/{endpoint}"
+   headers = {
+       "Authorization": f"Bearer {my_api_token}"
+   }
+   response = requests.get(full_url, headers=headers)
+   response.raise_for_status()
+   return response.json()
+
+
 def get_popular_movies():
     endpoint = f"{BASE_API}/popular"
     headers = {
@@ -14,13 +24,7 @@ def get_popular_movies():
 
 
 def get_movies_list(list_name):
-    endpoint = f"https://api.themoviedb.org/3/movie/{list_name}"
-    headers = {
-        "Authorization": f"Bearer {my_api_token}"
-    }
-    response = requests.get(endpoint, headers=headers)
-    response.raise_for_status()
-    return response.json()
+    return call_tmdb_api(f"movie/{list_name}")
 
 
 def get_movies(how_many, list_name):

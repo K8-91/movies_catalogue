@@ -8,6 +8,7 @@ app = Flask(__name__)
 def homepage():
     number = random.randint(8,50)
     list = ["popular", "top_rated", "now_playing", "latest", "upcoming"]
+    #list = ["popular", "now_playing"]
     selected_list = request.args.get('list_name', "popular")
     if selected_list in list:
         movies = tmdb_client.get_movies(number, list_name=selected_list)
