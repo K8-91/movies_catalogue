@@ -1,6 +1,6 @@
 import requests
-
-my_api_token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNmJjYzM4ODI4Y2UwN2ZjNjQyMGVlZjQ2MmQwOTIxYSIsInN1YiI6IjVmMzUwYWIzMTExZGExMDAzNTY0ZDAyZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.23GKKLcjf9Uewp6Z7d3imx7RuE9r3y6FnP_O2Lq0yXo"
+import os
+my_api_token = os.environ.get("TMDB_API_TOKEN", "")
 BASE_API = "https://api.themoviedb.org/3/movie"
 
 
