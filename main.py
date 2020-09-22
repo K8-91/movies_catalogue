@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import tmdb_client
 import random
+from waitress import serve
 
 app = Flask(__name__)
 
@@ -38,4 +39,5 @@ def search(search_query):
     return render_template("search.html", results=results, searching = searching) 
 
 
-
+if __name__ == "__main__":
+serve(app, host='0.0.0.0', port=80)
